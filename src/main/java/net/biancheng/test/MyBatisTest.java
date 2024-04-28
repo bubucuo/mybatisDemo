@@ -22,13 +22,12 @@ public class MyBatisTest {
         // SqlSession执行文件中定义的SQL，并返回映射结果
         // 添加网站
         Website website = new Website();
-        website.setName("编程帮");
-        website.setUrl("https://www.cainiaoplus.com/");
+        website.setName("百度");
+        website.setUrl("https://www.baidu.com/");
         website.setAge(21);
         website.setCountry("CN");
         ss.insert("net.biancheng.mapper.WebsiteMapper.addWebsite", website);
 
-        // Mapper接口发送 SQL
         // 查询所有网站
         List<Website> listWeb = ss.selectList("net.biancheng.mapper.WebsiteMapper.selectAllWebsite", website );
         for (Website site : listWeb) {
