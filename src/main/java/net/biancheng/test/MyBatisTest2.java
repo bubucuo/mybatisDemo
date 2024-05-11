@@ -8,9 +8,10 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
 import java.util.List;
 
-// 注解
+// 注解实现映射器
 public class MyBatisTest2 {
     public static void main(String[] args) throws IOException {
         // 读取配置文件mybatis-config.xml
@@ -26,12 +27,13 @@ public class MyBatisTest2 {
         website.setUrl("https://www.baidu.com/");
         website.setAge(21);
         website.setCountry("CN");
+        website.setCreatetime(new Date());
 
         WebsiteMapper websiteMapper = ss.getMapper(WebsiteMapper.class);
-        websiteMapper.addWebsite(website);
+        websiteMapper.addWebsite1(website);
 
         // 查询所有网站
-        List<Website> listWeb = websiteMapper.selectAllWebsite();
+        List<Website> listWeb = websiteMapper.selectAllWebsite1();
         for (Website site : listWeb) {
             System.out.println(site);
         }

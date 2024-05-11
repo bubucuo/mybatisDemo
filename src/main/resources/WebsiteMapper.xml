@@ -3,13 +3,14 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="net.biancheng.mapper.WebsiteMapper">
+<mapper namespace="net.biancheng.test.WebsiteMapper">
+
 
     <!-- 添加一个网站 -->
     <insert id="addWebsite" parameterType="net.biancheng.po.Website">
         insert into website
-            (name,url,age,country)
-        values(#{name},#{url},#{age},#{country})
+            (name,url,age,country,createtime)
+        values(#{name},#{url},#{age},#{country},#{createtime})
     </insert>
 
     <!-- 查询所有网站信息 -->
@@ -18,9 +19,14 @@
 <!--        select * from website-->
 <!--    </select>-->
 
+<!--    分页 -->
     <select id="selectAllWebsite"  parameterType="net.biancheng.po.Website"
             resultType="net.biancheng.po.Website">
         select * from website limit #{pageNo},#{pageSize}
     </select>
+
+
+
+
 
 </mapper>

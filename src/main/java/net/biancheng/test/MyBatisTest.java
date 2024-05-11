@@ -2,6 +2,7 @@ package net.biancheng.test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -11,6 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import net.biancheng.po.Website;
 
+// XML实现映射器
 public class MyBatisTest {
     public static void main(String[] args) throws IOException {
         // 读取配置文件mybatis-config.xml
@@ -26,10 +28,11 @@ public class MyBatisTest {
         website.setUrl("https://www.baidu.com/");
         website.setAge(21);
         website.setCountry("CN");
-        ss.insert("net.biancheng.mapper.WebsiteMapper.addWebsite", website);
+        website.setCreatetime(new Date());
+        ss.insert("net.biancheng.test.WebsiteMapper.addWebsite", website);
 
         // 查询所有网站
-        List<Website> listWeb = ss.selectList("net.biancheng.mapper.WebsiteMapper.selectAllWebsite", website );
+        List<Website> listWeb = ss.selectList("net.biancheng.test.WebsiteMapper.selectAllWebsite", website );
         for (Website site : listWeb) {
             System.out.println(site);
         }
