@@ -25,8 +25,4 @@
         select * from website limit #{pageNo},#{pageSize}
     </select>
 
-
-
-
-
 </mapper>

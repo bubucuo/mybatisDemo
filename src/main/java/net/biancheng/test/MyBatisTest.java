@@ -41,5 +41,4 @@ public class MyBatisTest {
         // 关闭 SqlSession
         ss.close();
     }
-
 }
